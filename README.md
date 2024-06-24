@@ -1,6 +1,4 @@
-# PL-SELL
-
-[![CodeFactor](https://www.codefactor.io/repository/github/kollakek/pl-sell/badge)](https://www.codefactor.io/repository/github/kollakek/pl-sell)
+# VNDTeam
 
 ## Описание
 
@@ -11,14 +9,15 @@
 - [Astro](https://astro.build/) - статический фреймворк для создания сайтов.
 - [Tailwind CSS](https://tailwindcss.com/) - utility-first CSS framework для быстрого стилизации элементов.
 - [React](https://ru.reactjs.org/) - JS библиотека для создания пользовательских интерфейсов.
+- [DaisyUI](https://daisyui.com/) - UI компоненты на основе Tailwind CSS.
 
 ## Установка и запуск
 
 1. Установите Node.js версии 14 или выше.
-2. Клонируйте репозиторий `git clone https://github.com/kollakek/pl-sell.git`.
+2. Клонируйте репозиторий `git clone https://github.com/VND-Coders-Group/pl-sell.git`.
 3. Установите зависимости `npm install`.
 4. Запустите локальный сервер разработки `npm run dev`.
-5. Откройте в браузере `http://localhost:3000`.
+5. Откройте в браузере `http://localhost:4321`.
 
 ## Лицензия
 
@@ -26,14 +25,7 @@
 
 ## Контакты
 
-- [Вконтакте](https://vk.com/kollakek)
-- [Telegram](https://t.me/kollakek)
-
-## Скриншоты
-
-![](https://i.imgur.com/Qo5Qj5b.png)
-![](https://i.imgur.com/Q1RiQfj.png)
-![](https://i.imgur.com/k37Q7JQ.png)
+- [Telegram](https://t.me/vndteam_bot)
 
 ---
 
