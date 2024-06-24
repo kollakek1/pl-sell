@@ -30,14 +30,14 @@ export default function Header() {
                         <a href="/" className="text-3xl font-bold my-auto">VND<span className="text-primary">team</span></a>
                         <div className="h-8 w-[1px] bg-white/20 my-auto"></div>
                         <div className="max-lg:hidden">
-                            <a href="/" className="my-auto btn btn-ghost text-xl">Главная</a>
-                            <a href="/" className="my-auto btn btn-ghost text-xl">Новости</a>
-                            <a href="/" className="my-auto btn btn-ghost text-xl">Заказы</a>
+                            <a href="/" className="my-auto btn btn-ghost text-xl">Home</a>
+                            <a href="/" className="my-auto btn btn-ghost text-xl">News</a>
+                            <a href="/" className="my-auto btn btn-ghost text-xl">Orders</a>
                         </div>
                     </div>
                     <div className="flex gap-2">
-                        <a href="/en" className="btn btn-ghost my-auto text-base">EN</a>
-                        <a href="/" className="btn btn-primary my-auto text-base">Заказать</a>
+                        <a href="/" className="btn btn-ghost my-auto text-base">RU</a>
+                        <a href="/" className="btn btn-primary my-auto text-base">Order now</a>
                     </div>
                 </div>
             </div>
