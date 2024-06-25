@@ -1,17 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Проверяем, было ли перенаправление уже выполнено
+  const redirected = localStorage.getItem('redirected');
 
-  const redirected = localStorage.getItem('en');
-  
   if (!redirected) {
     const userLang = navigator.language || navigator.userLanguage; 
     const userLangPrefix = userLang.split('-')[0];
 
-
+    // Если язык пользователя не русский, перенаправляем на другую страницу
     if (userLangPrefix !== 'ru') {
-      window.location.href = '/en';
+      window.location.href = '/en'; // Поменяйте на нужный вам путь
+      localStorage.setItem('redirected', 'true');
     }
-
-    localStorage.setItem('en', 'true');
   }
 });
