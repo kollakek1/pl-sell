@@ -11,8 +11,11 @@ import Image from 'astro/components/Image.astro';
 		<section class="h-screen flex max-lg:flex-wrap gap-8 lg:container mx-auto items-center max-lg:mt-36 w-full max-lg:px-4">
 			<div class="w-full">
 				<div class="w-full max-lg:text-center max-lg:mx-auto">
-					<h1 class="text-7xl font-medium text-white">Всё что нужно для вашего <span class="text-primary ">сервера</span></h1>
+					<h1 class="text-7xl font-medium ">Всё что нужно для вашего <span class="text-primary ">сервера</span></h1>
 					<p class="text-2xl mt-7">Просто вперед и создайте сервер в майнкрафт</p>
+					<button class="btn btn-primary btn-lg mt-7 text-2xl rounded-2xl absolute blur-2xl -z-10">
+						Сделать заказ <Icon name="ic:baseline-arrow-right-alt" class='mt-1.5 text-4xl' />
+					</button>
 					<button class="btn btn-primary btn-lg mt-7 text-2xl rounded-2xl">
 						Сделать заказ <Icon name="ic:baseline-arrow-right-alt" class='mt-1.5 text-4xl' />
 					</button>
@@ -54,7 +57,7 @@ import Image from 'astro/components/Image.astro';
 				<h3 class="text-lg lg:text-4xl font-medium">Сайты для автодоната, телеграм боты, плагины многое другое для вашего <span class="text-primary">сервера</span></h3>
 			</div>
 			<div class="w-full text-start mt-4 lg:mt-0">
-				<div class="max-w-96 card bg-base-100 mx-auto">
+				<div class="max-w-96 card bg-base-100 mx-auto shadow-lg">
 					<div class="card-body">
 						<input placeholder="Никнейм" class="input input-bordered w-full mb-4" />
 						<select class="select select-bordered w-full mb-4">
@@ -73,7 +76,7 @@ import Image from 'astro/components/Image.astro';
 		</section>
 		<section class="h-max lg:flex gap-8 lg:container mx-auto w-full px-4 mt-12">
 			<div class="w-full h-min">
-				<div class="mockup-code mb-4 lg:mb-0">
+				<div class="mockup-code mb-4 lg:mb-0 shadow-lg">
 					<pre data-prefix="$" class="text-primary"><code>java -jar server.jar</code></pre>
 					<pre data-prefix=">"><code>Loading libraries, please wait...</code></pre>
 					<pre data-prefix=">"><code>Starting minecraft server</code></pre>
