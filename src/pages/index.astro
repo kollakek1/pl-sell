@@ -2,51 +2,101 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/header';
 import { Icon } from 'astro-icon/components'
+import Image from 'astro/components/Image.astro';
 ---
 
 <Layout title="VNDTeam - создание серверов майнкрафт">
 	<main>
 		<Header client:load/>
-		<section class="h-screen flex container mx-auto items-center">
-			<div class="w-1/2">
-				<h1 class="text-7xl font-medium text-white">Всё что нужно для вашего <span class="text-primary ">сервера</span></h1>
-				<p class="text-2xl mt-7">Просто вперед и создайте сервер в майнкрафт</p>
-				<button class="btn btn-primary btn-lg mt-7 text-2xl rounded-2xl">Сделать заказ <Icon name="ic:baseline-arrow-right-alt" class='mt-1.5 text-4xl' /></button>
+		<section class="h-screen flex max-lg:flex-wrap gap-8 lg:container mx-auto items-center max-lg:mt-36 w-full max-lg:px-4">
+			<div class="w-full">
+				<div class="w-full max-lg:text-center max-lg:mx-auto">
+					<h1 class="text-7xl font-medium text-white">Всё что нужно для вашего <span class="text-primary ">сервера</span></h1>
+					<p class="text-2xl mt-7">Просто вперед и создайте сервер в майнкрафт</p>
+					<button class="btn btn-primary btn-lg mt-7 text-2xl rounded-2xl">
+						Сделать заказ <Icon name="ic:baseline-arrow-right-alt" class='mt-1.5 text-4xl' />
+					</button>
+				</div>
 			</div>
-			<div class="w-1/2">
-				<div class="mx-auto w-[30rem]">
-					<div class="p-4 bg-base-200 border-2 border-base-100 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500">
-						<div class="flex">
-							<div class="p-2 bg-secondary/10 border border-secondary rounded text-center w-min">
-								<Icon name="ic:baseline-access-time" class='text-3xl text-secondary'/>
-							</div>
-							<p class="text-3xl ml-4 font-medium my-auto">Опыт</p>
+			<div class="w-full">
+				<div class="p-4 bg-base-200 border-2 border-base-100 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500">
+					<div class="flex">
+						<div class="p-2 bg-secondary/10 border border-secondary rounded text-center w-min">
+							<Icon name="ic:baseline-access-time" class='text-3xl text-secondary'/>
 						</div>
-						<p class="text-2xl mt-3">Мы разрабатываем сервера уже <span class="text-secondary">2</span> года</p>
+						<p class="text-3xl ml-4 font-medium my-auto">Опыт</p>
 					</div>
-					<div class="p-4 bg-base-200 border-2 border-base-100 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500 mt-3">
-						<div class="flex">
-							<div class="p-2 bg-green-400/10 border border-green-400 rounded text-center w-min">
-								<Icon name="ic:round-support-agent" class='text-3xl text-green-400'/>
-							</div>
-							<p class="text-3xl ml-4 font-medium my-auto">Поддержка</p>
+					<p class="text-2xl mt-3">Мы разрабатываем сервера уже <span class="text-secondary">2</span> года</p>
+				</div>
+				<div class="p-4 bg-base-200 border-2 border-base-100 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500 mt-3">
+					<div class="flex">
+						<div class="p-2 bg-green-400/10 border border-green-400 rounded text-center w-min">
+							<Icon name="ic:round-support-agent" class='text-3xl text-green-400'/>
 						</div>
-						<p class="text-2xl mt-3">Мы всегда готовы помочь вам</p>
+						<p class="text-3xl ml-4 font-medium my-auto">Поддержка</p>
 					</div>
-					<div class="p-4 bg-base-200 border-2 border-base-100 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500 mt-3">
-						<div class="flex">
-							<div class="p-2 bg-primary/10 border border-primary rounded text-center w-min">
-								<Icon name="ic:round-flash-on" class='text-3xl text-primary'/>
-							</div>
-							<p class="text-3xl ml-4 font-medium my-auto">Скорость</p>
+					<p class="text-2xl mt-3">Мы всегда готовы помочь вам</p>
+				</div>
+				<div class="p-4 bg-base-200 border-2 border-base-100 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500 mt-3">
+					<div class="flex">
+						<div class="p-2 bg-primary/10 border border-primary rounded text-center w-min">
+							<Icon name="ic:round-flash-on" class='text-3xl text-primary'/>
 						</div>
-						<p class="text-2xl mt-3">Все заказы выполняются в максимально <span class="text-primary ">быстро</span> и <span class="text-primary ">качественно</span></p>
+						<p class="text-3xl ml-4 font-medium my-auto">Скорость</p>
+					</div>
+					<p class="text-2xl mt-3">Все заказы выполняются максимально <span class="text-primary ">быстро</span> и <span class="text-primary ">качественно</span></p>
+				</div>
+			</div>
+		</section>
+		<section class="h-max lg:flex gap-8 lg:container mx-auto w-full px-4 mt-32">
+			<div class="w-full h-min">
+				<h2 class="text-xl lg:text-5xl font-medium mb-4">Большие <span class="text-primary">возможности</span></h2>
+				<h3 class="text-lg lg:text-4xl font-medium">Сайты для автодоната, телеграм боты, плагины многое другое для вашего <span class="text-primary">сервера</span></h3>
+			</div>
+			<div class="w-full text-start mt-4 lg:mt-0">
+				<div class="max-w-96 card bg-base-100 mx-auto">
+					<div class="card-body">
+						<input placeholder="Никнейм" class="input input-bordered w-full mb-4" />
+						<select class="select select-bordered w-full mb-4">
+							<option selected>Вип</option>
+							<option>Креатив</option>
+							<option>Лорд</option>
+						</select>
+						<label class="label cursor-pointer mb-4">
+							<span>Отправить чек на Email</span>
+							<input type="checkbox" class="toggle ml-2" />
+						</label>
+						<button class="btn btn-primary w-full">Купить</button>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section>
-			
-		</section>
+		<section class="h-max lg:flex gap-8 lg:container mx-auto w-full px-4 mt-12">
+			<div class="w-full h-min">
+				<div class="mockup-code mb-4 lg:mb-0">
+					<pre data-prefix="$" class="text-primary"><code>java -jar server.jar</code></pre>
+					<pre data-prefix=">"><code>Loading libraries, please wait...</code></pre>
+					<pre data-prefix=">"><code>Starting minecraft server</code></pre>
+					<pre data-prefix=">"><code>Preparing level "world"</code></pre>
+					<pre data-prefix=">"><code>[YOUR-PLUGIN] Enabling plugin v1.0</code></pre>
+					<pre data-prefix=">"><code>Running delayed init tasks</code></pre>
+					<pre data-prefix=">" class="text-success"><code>Done (4.3s)! For help, type "help"</code></pre>
+				</div>
+			</div>
+			<div class="w-full text-start mt-4 lg:mt-0">
+				<h2 class="text-xl lg:text-5xl font-medium mb-4">Плагины на <span class="text-primary">Java</span></h2>
+				<h3 class="text-lg lg:text-4xl font-medium">При разработке плагинов мы выбираем язык программирования <span class="text-primary">Java</span>, что обеспечивает высокую производительность.</h3>
+			</div>
+		</section>	
+		<section class="h-max max-lg:hidden lg:container mx-auto w-full px-4 mt-24">
+			<div class="mx-auto flex justify-between">
+				<Image src={'https://www.svgrepo.com/show/373446/astro.svg'} width={100} height={100} alt="Astro" loading='lazy'/>
+				<Image src={'https://www.svgrepo.com/show/333609/tailwind-css.svg'} width={100} height={100} alt="Tailwind" loading='lazy'/>
+				<Image src={'https://raw.githubusercontent.com/saadeghi/daisyui-images/master/images/daisyui-logo/favicon-192.png'} width={100} height={100} alt="DaisyUI" loading='lazy'/>
+				<Image src={'https://www.svgrepo.com/show/306646/react.svg'} width={100} height={100} alt="React" loading='lazy'/>
+				<Image src={'https://www.svgrepo.com/show/184143/java.svg'} width={100} height={100} alt="Java" loading='lazy'/>
+				<Image src={'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png'} width={100} height={100} alt="Java" loading='lazy'/>
+			</div>
+		</section>	
 	</main>
 </Layout>
