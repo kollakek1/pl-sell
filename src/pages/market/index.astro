@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import List from '../../components/market/list';
+
+---
+
+<Layout title="VNDTeam - продукты" description="Компания VNDTeam предоставляет услуги по созданию и серверов, плагинов и систем доната для серверов майнкрафт. Мы предлагаем разработку плагинов, сборок и систем доната, которые помогут вашему серверу стать одним из лучших. Наши эксперты по разработке плагинов и систем доната гарантируют высокое качество и производительность вашего сервера.">
+    <main>
+        <Header client:load/>
+        <section class="h-max flex mt-2 lg:mt-32 justify-center w-full container mx-auto">
+            <List client:load>
+        </section>
+    </main>
+</Layout>

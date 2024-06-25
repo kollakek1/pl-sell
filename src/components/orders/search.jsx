@@ -47,13 +47,13 @@ export default function Search() {
                     <div className="w-full h-max grid grid-cols-2 gap-x-4">
                         <div>
                             <p className="text-xl mt-8 font-bold">Статус: {order?.status}</p>
-                            <p className="text-xl mt-4">Цена: {order?.items.reduce((total, item) => total + item.price, 0)}</p>
+                            <p className="text-xl mt-4">Цена: {order?.items.reduce((total, item) => total + item.price, 0)}₽</p>
                         </div>
                         <div className="mt-8">
                             {order?.items.map((item, index) => (
                                 <div className="card bg-base-100 p-3 border-2 border-base-300 mb-2 shadow-md">
                                     <p className="text-xl font-bold">{item.name}</p>
-                                    Цена: {item.price}
+                                    Цена: {item.price}₽
                                 </div>
                             ))}
                         </div>
