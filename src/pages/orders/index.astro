@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+
+import Search from '../../components/orders/search';
+
+---
+
+<Layout title="VNDTeam - заказы" description="Компания VNDTeam предоставляет услуги по созданию и серверов, плагинов и систем доната для серверов майнкрафт. Мы предлагаем разработку плагинов, сборок и систем доната, которые помогут вашему серверу стать одним из лучших. Наши эксперты по разработке плагинов и систем доната гарантируют высокое качество и производительность вашего сервера.">
+    <main>
+        <Header client:load/>
+        <section class="h-screen flex items-center justify-center w-full">
+            <div class="w-full">
+                <h1 class="text-6xl font-bold text-center">Заказы</h1>
+                <h2 class="text-2xl font-medium text-center mt-2">Сдесь вы можете отследить все свои заказы указав их номер</h2>
+                <Search client:load/>
+            </div>
+        </section>
+        <Footer/>
+    </main>
+</Layout>
