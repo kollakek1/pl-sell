@@ -23,7 +23,7 @@ export default function Header() {
 
     const headerClass = isVisible ? 'max-sm:top-0 top-6' : '-top-24';
     return (
-        <header className={`transition-all duration-700 fixed ${headerClass} container mx-auto inset-x-0 h-min z-30`}>
+        <header className={`transition-all duration-700 lg:fixed ${headerClass} container mx-auto inset-x-0 h-min z-30`}>
             <div className="border-b sm:border border-white/5 bg-white/5 backdrop-blur sm:card py-3 px-4">
                 <div className="flex justify-between items-center">
                     <div className="flex gap-3">
