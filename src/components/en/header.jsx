@@ -37,7 +37,7 @@ export default function Header() {
                     </div>
                     <div className="flex gap-2">
                         <label className="swap swap-rotate">
-                            <input type="checkbox" className="theme-controller" value="light" />
+                            <input type="checkbox" className="theme-controller" value="dark" />
 
                             <svg
                                 className="swap-off h-7 w-7 fill-current"
