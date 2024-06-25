@@ -1,9 +1,10 @@
 ---
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 import { ViewTransitions } from 'astro:transitions';
 ---
 
@@ -11,7 +12,7 @@ import { ViewTransitions } from 'astro:transitions';
 <html lang="en" class="bg-base-300" data-theme="dark">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="VNDTeam - создание серверов майнкрафт" />
+		<meta name="description" content={description} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
