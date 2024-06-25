@@ -39,7 +39,12 @@ export default function List() {
                 <button className="btn join-item w-1/6" onClick={() => sortByType('config')}>Файлы настроек</button>
             </div>
             <div className="w-full h-max mt-3 lg:grid grid-cols-2 gap-6">
-                
+                {!sortProducts && 
+                    <>
+                        <p className="w-full h-48 skeleton shadow-md"></p>
+                        <p className="w-full h-48 skeleton shadow-md"></p>
+                    </>
+                }
                 {sortProducts?.map((product) => (
                     <div key={product._id} className="bg-base-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500 border-2 border-base-100 card p-6 w-full h-max mb-3">
                         <div className="flex justify-between">
