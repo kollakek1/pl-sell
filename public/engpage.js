@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Если язык пользователя не русский, перенаправляем на другую страницу
     if (userLangPrefix !== 'ru') {
-      window.location.href = '/en'; // Поменяйте на нужный вам путь
+      window.location.href = '/en';
       localStorage.setItem('redirected', 'true');
     }
   }
