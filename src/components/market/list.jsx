@@ -49,11 +49,15 @@ export default function List() {
                     <div key={product._id} className="bg-base-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500 border-2 border-base-100 card p-6 w-full h-max mb-3">
                         <div className="flex justify-between">
                             <h1 className="text-2xl font-medium">{product.name}</h1>
-                            {product.price === 0 ? 
-                                <a href={product.github} className="btn btn-primary btn-sm mt-1">Смотреть</a> 
-                                : 
+                            {product.price === 0 ? (
+                                product.bages.includes('Open Source') && product.github ? (
+                                    <a href={product.github} className="btn btn-primary btn-sm mt-1">Смотреть</a>
+                                ) : (
+                                    <a href={'/product/' + product._id} className="btn btn-primary btn-sm mt-1">Смотреть</a>
+                                )
+                            ) : (
                                 <a href={'/product/' + product._id} className="btn btn-primary btn-sm mt-1">{product.price} ₽</a>
-                            }
+                            )}
                         </div>
                         <div className="flex gap-2 mt-3">
                             {product.price === 0 ? 
