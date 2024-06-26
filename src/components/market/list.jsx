@@ -31,17 +31,17 @@ export default function List() {
     return (
         <div className="w-full max-lg:px-2">
             <div className="join w-full">
-                <button className="btn join-item w-1/6" onClick={() => sortByType('all')}>Всё</button>
-                <button className="btn join-item w-1/6" onClick={() => sortByType('free')}>Бесплатные</button>
-                <button className="btn join-item w-1/6" onClick={() => sortByType('plugin')}>Плагины</button>
-                <button className="btn join-item w-1/6" onClick={() => sortByType('build')}>Сборки</button>
-                <button className="btn join-item w-1/6" onClick={() => sortByType('autodonate')}>Автодонат</button>
-                <button className="btn join-item w-1/6" onClick={() => sortByType('config')}>Файлы настроек</button>
+                <button className="btn join-item w-1/5 lg:w-1/6" onClick={() => sortByType('all')}>Всё</button>
+                <button className="btn join-item w-1/6 max-lg:hidden" onClick={() => sortByType('free')}>Бесплатные</button>
+                <button className="btn join-item w-1/5 lg:w-1/6" onClick={() => sortByType('plugin')}>Плагины</button>
+                <button className="btn join-item w-1/5 lg:w-1/6" onClick={() => sortByType('build')}>Сборки</button>
+                <button className="btn join-item w-1/5 lg:w-1/6" onClick={() => sortByType('site')}>Сайты</button>
+                <button className="btn join-item w-1/5 lg:w-1/6" onClick={() => sortByType('config')}>Файлы настроек</button>
             </div>
             <div className="w-full h-max mt-3 lg:grid grid-cols-2 gap-6">
                 {!sortProducts && 
                     <>
-                        <p className="w-full h-48 skeleton shadow-md"></p>
+                        <p className="w-full h-48 skeleton shadow-md mb-3"></p>
                         <p className="w-full h-48 skeleton shadow-md"></p>
                     </>
                 }
