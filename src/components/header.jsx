@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 export default function Header() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('dim');
       
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');

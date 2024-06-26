@@ -46,7 +46,7 @@ export default function List() {
                     </>
                 }
                 {sortProducts?.map((product) => (
-                    <div key={product._id} className="bg-base-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500 border-2 border-base-100 card p-6 w-full h-max mb-3">
+                    <div key={product._id} className="bg-base-200 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-500 border-2 border-base-100 card p-6 w-full h-48 mb-3">
                         <div className="flex justify-between">
                             <h1 className="text-2xl font-medium">{product.name}</h1>
                             {product.price === 0 ? (
@@ -67,7 +67,7 @@ export default function List() {
                             }
                             {product.bages.includes('Open Source') && <div className="badge badge-neutral badge-lg">Open Source</div>}
                         </div>
-                        <p className="text-lg mt-3 text-base-content/75">{product.description}</p>
+                        <p className="text-lg mt-3 text-base-content/75 truncate text-wrap">{product.description}</p>
                     </div>
                 ))}
             </div>
