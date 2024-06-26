@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 export default function Header() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-    const [theme, setTheme] = useState('dim');
       
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
         if (storedTheme) {
-            setTheme(storedTheme);
+            document.documentElement.setAttribute('data-theme', storedTheme);
+        }
+        else {
+            localStorage.setItem('theme', 'dim');
+            document.documentElement.setAttribute('data-theme', 'dim');
         }
     }, []);
     
-    useEffect(() => {
+    const toggleTheme = () => {
+        const theme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-    }, [theme]);
-    
-    const toggleTheme = () => {
-        setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
     };
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export default function Header() {
                         <div className="max-lg:hidden flex gap-1">
                             <a href="/" className="my-auto btn btn-ghost text-xl">
                                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fillRule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clipRulee="evenodd"/>
+                                    <path fillRule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clipRule="evenodd"/>
                                 </svg>
                                 Главная
                             </a>
@@ -94,7 +94,7 @@ export default function Header() {
                             </svg>
                             EN
                         </a>
-                        <a href="/" className="btn btn-primary my-auto text-base">
+                        <a href="/services" className="btn btn-primary my-auto text-base">
                             Заказать
                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>

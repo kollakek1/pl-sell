@@ -2,4 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
+import Main from '../../components/services/main';
 ---
+
+<Layout title="VNDTeam - оформление заказа" description="Компания VNDTeam предоставляет услуги по созданию и серверов, плагинов и систем доната для серверов майнкрафт. Мы предлагаем разработку плагинов, сборок и систем доната, которые помогут вашему серверу стать одним из лучших. Наши эксперты по разработке плагинов и систем доната гарантируют высокое качество и производительность вашего сервера.">
+    <main>
+        <Header client:only="react" />
+        <section class="lg:min-h-screen mt-28 max-lg:mt-2 h-max flex max-lg:flex-wrap gap-8 lg:container mx-auto w-full max-lg:px-4">
+            <Main client:only="react"/>
+        </section>
+        <Footer></Footer>
+    </main>
+</Layout>
