@@ -79,7 +79,7 @@ export default function Main() {
                         <h2 className="text-3xl font-bold mb-3">Добавте к заказу?</h2>
                     )}
                     {server && (
-                        <div className="w-full card bg-base-200 border-2 border-base-100 shadow-md p-4 mb-2">
+                        <div className="w-full card bg-base-200 border-2 border-base-100 shadow-md p-4 mb-2 transition-colors duration-500">
                             <h3 className="text-3xl font-medium mb-4">Сервер</h3>
                             <h2 className="text-2xl font-medium mb-3">Тип сервера</h2>
                             <select className="select w-full max-w-xs mb-3">
@@ -95,7 +95,7 @@ export default function Main() {
                         </div>
                     )}
                     {plugin && (
-                        <div className="w-full card bg-base-200 border-2 border-base-100 shadow-md p-4 mb-2">
+                        <div className="w-full card bg-base-200 border-2 border-base-100 shadow-md p-4 mb-2 transition-colors duration-500">
                             <h3 className="text-3xl font-medium mb-4">Плагин</h3>
                             <h2 className="text-2xl font-medium mb-3">Сложность плагина</h2>
                             <input type="range" min={0} max="3000" className="range" step="750" onChange={(e) => setPluginPrice(parseInt(e.target.value))} />
@@ -112,7 +112,7 @@ export default function Main() {
                         </div>
                     )}
                     {site && (
-                        <div className="w-full card bg-base-200 border-2 border-base-100 shadow-md p-4">
+                        <div className="w-full card bg-base-200 border-2 border-base-100 shadow-md p-4 transition-colors duration-500">
                             <h3 className="text-3xl font-medium mb-4">Сайт автодоната</h3>
                             <h2 className="text-2xl font-medium mb-4">Сложность сайта</h2>
                             <input type="range" min={0} max="4000" className="range" step="1000" onChange={(e) => setSitePrice(parseInt(e.target.value))} />
@@ -134,7 +134,7 @@ export default function Main() {
                 </div>
 
             </div>
-            <div className="2xl:w-1/3 w-full card bg-base-200 border-2 border-base-100 shadow-md p-6">
+            <div className="2xl:w-1/3 w-full card bg-base-200 border-2 border-base-100 shadow-md p-6 transition-colors duration-500">
                 <h1 className="text-2xl font-bold mb-2">Как к вам обращаться?</h1>
                 <input type="text" placeholder="Псевдоним" className="input input-bordered w-full mb-5" />
                 <h1 className="text-2xl font-bold mb-2">Email</h1>
