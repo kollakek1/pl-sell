@@ -8,7 +8,7 @@
 
 - [Astro](https://astro.build/) - статический фреймворк для создания сайтов.
 - [Tailwind CSS](https://tailwindcss.com/) - utility-first CSS framework для быстрого стилизации элементов.
-- [React](https://ru.reactjs.org/) - JS библиотека для создания пользовательских интерфейсов.
+- [React](https://react.dev/) - JS библиотека для создания пользовательских интерфейсов.
 - [DaisyUI](https://daisyui.com/) - UI компоненты на основе Tailwind CSS.
 
 ## Установка и запуск
