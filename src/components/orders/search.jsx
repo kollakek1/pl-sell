@@ -4,7 +4,10 @@ export default function Search() {
     const [order, setOrder] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
+    const[loading, setLoading] = useState(false);
+
     const handleSubmit = async (event) => {
+        setLoading(true);
         event.preventDefault();
         const orderId = event.target.elements.orderId.value;
         const response = await fetch(`/api/getorder/${orderId}`);
@@ -15,6 +18,7 @@ export default function Search() {
             document.getElementById('modal').showModal()
             setOrder(data);
         }
+        setLoading(false);
     };
 
     return (
@@ -22,7 +26,8 @@ export default function Search() {
             <form onSubmit={handleSubmit}>
                 <label className="input input-bordered flex items-center gap-2">
                     <input type="text" name="orderId" className="grow" placeholder="Введите уникальный номер" required />
-                    <button type="submit">
+                    <button type="submit" disabled={loading}>
+                        {loading ? <span className="loading loading-spinner loading-sm mt-2"></span> :
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 16 16"
@@ -34,6 +39,7 @@ export default function Search() {
                             clipRule="evenodd" 
                             />
                         </svg>
+                        }
                     </button>
                 </label>
                 <p className="text-error mt-1">{errorMessage}</p>
@@ -43,21 +49,24 @@ export default function Search() {
                     <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 className="font-bold text-2xl">Заказ № {order?.id}</h3>
-                    <div className="w-full h-max grid grid-cols-2 gap-x-4">
-                        <div>
-                            <p className="text-xl mt-8 font-bold">Статус: {order?.status}</p>
-                            <p className="text-xl mt-4">Цена: {order?.items.reduce((total, item) => total + item.price, 0)}₽</p>
-                        </div>
-                        <div className="mt-8">
-                            {order?.items.map((item, index) => (
-                                <div className="card bg-base-100 p-3 border-2 border-base-300 mb-2 shadow-md">
-                                    <p className="text-xl font-bold">{item.name}</p>
-                                    Цена: {item.price}₽
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <h3 className="font-bold text-2xl">Заказ № {order?._id}</h3>
+                    <ul>
+                        <li>ID: {order?._id}</li>
+                        <li>Server: {order?.server.toString()}</li>
+                        <li>Plugin: {order?.plugin.toString()}</li>
+                        <li>Site: {order?.site.toString()}</li>
+                        <li>Launcher: {order?.launcher.toString()}</li>
+                        <li>AutoDesign: {order?.autoDesign.toString()}</li>
+                        <li>ServerType: {order?.serverType}</li>
+                        <li>Price: {order?.price}</li>
+                        <li>UserEmail: {order?.userEmail}</li>
+                        <li>UserName: {order?.userName}</li>
+                        <li>ServerDescription: {order?.serverDescription}</li>
+                        <li>PluginDescription: {order?.pluginDescription}</li>
+                        <li>SiteDescription: {order?.siteDescription}</li>
+                        <li>LauncherDescription: {order?.launcherDescription}</li>
+                        <li>CreatedAt: {order?.createdAt}</li>
+                    </ul>
                 </div>
             </dialog>
         </div>
