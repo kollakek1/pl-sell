@@ -24,5 +24,4 @@ export async function GET({ params, request }) {
   } else {
     return new Response('Not found', { status: 404 });
   }
-  
 };
