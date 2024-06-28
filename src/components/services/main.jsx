@@ -209,7 +209,9 @@ export default function Main() {
             <div className="w-full flex items-center justify-center h-screen">
                 <div className="bg-base-200 border-2 border-base-100 shadow-md p-6 card">
                     <h1 className="text-4xl font-bold mb-6 text-center">Заявка создана</h1>
-                    <h2>Номер вашей заявки: {successData.insertedId}</h2>
+                    <h2 className="text-center text-xl mb-2">Номер вашей заявки: {successData.insertedId}</h2>
+                    <h2 className="text-center mb-4">Сохраните, что бы не потерять</h2>
+                    <h2 className="text-center">Мы свяжемся с вами в ближайшее время</h2>
                 </div>
             </div>
         )
