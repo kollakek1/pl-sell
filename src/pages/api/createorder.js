@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 export async function POST({ request }) {
   const body = await request.text();
   const { server, plugin, site, launcher, autoDesign, serverType, price, userEmail, userName, serverDescription, pluginDescription, siteDescription, launcherDescription } = JSON.parse(body);
-
+  const status = 'В обработке';
   const uri = import.meta.env.MONGODB_URI;
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
@@ -18,6 +18,7 @@ export async function POST({ request }) {
     const orders = db.collection('orders');
 
     result = await orders.insertOne({
+      status,
       server,
       plugin,
       site,

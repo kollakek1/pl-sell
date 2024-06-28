@@ -49,24 +49,22 @@ export default function Search() {
                     <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 className="font-bold text-2xl">Заказ № {order?._id}</h3>
-                    <ul>
-                        <li>ID: {order?._id}</li>
-                        <li>Server: {order?.server.toString()}</li>
-                        <li>Plugin: {order?.plugin.toString()}</li>
-                        <li>Site: {order?.site.toString()}</li>
-                        <li>Launcher: {order?.launcher.toString()}</li>
-                        <li>AutoDesign: {order?.autoDesign.toString()}</li>
-                        <li>ServerType: {order?.serverType}</li>
-                        <li>Price: {order?.price}</li>
-                        <li>UserEmail: {order?.userEmail}</li>
-                        <li>UserName: {order?.userName}</li>
-                        <li>ServerDescription: {order?.serverDescription}</li>
-                        <li>PluginDescription: {order?.pluginDescription}</li>
-                        <li>SiteDescription: {order?.siteDescription}</li>
-                        <li>LauncherDescription: {order?.launcherDescription}</li>
-                        <li>CreatedAt: {order?.createdAt}</li>
-                    </ul>
+                    <h3 className="font-bold text-2xl">Заказ</h3>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div >
+                            <p className="mb-2 mt-4">Заказчик: {order?.userName}</p>
+                            <p className="mb-2">Статус: {order?.status}</p>
+                            <p className="">Цена: {order?.price}₽</p>
+                            <a href={order?.link} className="btn btn-primary mt-4" disabled={!order?.link}>{order?.link ? 'Скачать' : 'Нет ссылки'}</a>
+                        </div>
+                        <div>
+                            <h3 className="font-medium text-xl mt-4">В заказе:</h3>
+                            {order?.server && <p className="mb-2">Сервер</p>}
+                            {order?.plugin && <p className="mb-2">Плагин</p>}
+                            {order?.site && <p className="mb-2">Сайт</p>}
+                            {order?.launcher && <p className="mb-2">Лаунчер</p>}
+                        </div>
+                    </div>
                 </div>
             </dialog>
         </div>
