@@ -196,8 +196,8 @@ export default function Main() {
                 <div className="2xl:w-1/3 w-full card bg-base-200 border-2 border-base-100 shadow-md p-6 transition-colors duration-500">
                     <h1 className="text-2xl font-bold mb-2">Как к вам обращаться?</h1>
                     <input type="text" placeholder="Псевдоним" className="input input-bordered w-full mb-5" onChange={(e) => setUserName(e.target.value)}/>
-                    <h1 className="text-2xl font-bold mb-2">Email</h1>
-                    <input type="email" className="input input-bordered w-full mb-5" placeholder="example@mail.ru" onChange={(e) => setUserEmail(e.target.value)}/>
+                    <h1 className="text-2xl font-bold mb-2">Никнейм в Telegram</h1>
+                    <input type="email" className="input input-bordered w-full mb-5" placeholder="@example" onChange={(e) => setUserEmail(e.target.value)}/>
                     <h1 className="text-2xl font-bold mb-5">Цена: ~{price}₽</h1>
                     <button className="btn btn-primary w-full" onClick={handleSubmit} disabled={loading}>Создать заявку</button>
                 </div>
