@@ -22,17 +22,17 @@ const product = await products.findOne({ _id: new ObjectId(id) });
 
         <section class="lg:min-h-screen mt-28 max-lg:mt-2 h-max flex max-lg:flex-wrap gap-8 lg:container mx-auto w-full max-lg:px-4">
             <div class="w-full flex gap-4">
-                <div class="rounded-box bg-base-200 border-2 border-base-100 w-full p-6">
+                <div class="rounded-box bg-base-200 border-2 border-base-100 w-full transition-colors duration-500 p-6">
                     <h1 class="text-5xl font-medium te">{product.name}</h1>
                     <h2 class="text-2xl mt-8">{product.description}</h2>
                     {product.preview_url && <a href={product.preview_url} class="btn btn-primary btn-lg mt-8 text-2xl rounded-2xl">Пример шаблона</a>}
                 </div>
-                <div class="rounded-box bg-base-200 border-2 border-base-100 w-1/3 p-6">
+                <form class="rounded-box bg-base-200 border-2 border-base-100 w-1/3 transition-colors duration-500 p-6" action="/create-product-order" method="POST">
                     <p class="text-2xl mb-3">Никнейм в Telegram</p>
-                    <input type="text" class="input input-bordered w-full mb-4" placeholder="@Nickname"/>
+                    <input type="text" class="input input-bordered w-full mb-4" placeholder="@Nickname" required/>
                     <p class="text-2xl mb-3">Цена: {product.price}₽</p>
-                    <button class="btn btn-primary w-full">Купить</button>
-                </div>
+                    <button class="btn btn-primary w-full" type="submit">Купить</button>
+                </form>
             </div>
         </section>
         
