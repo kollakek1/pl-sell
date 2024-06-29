@@ -76,7 +76,7 @@ export default function Main() {
     }
     if (!successData) {
         return (
-            <form className="w-full flex gap-8 max-2xl:flex-wrap">
+            <form className="w-full flex gap-8 max-2xl:flex-wrap" onSubmit={handleSubmit}>
                 <div className="card w-full p-6 border-2 border-base-100">
                     <h1 className="text-4xl font-bold mb-4">Наши услуги</h1>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
@@ -195,11 +195,15 @@ export default function Main() {
                 </div>
                 <div className="2xl:w-1/3 w-full card bg-base-200 border-2 border-base-100 shadow-md p-6 transition-colors duration-500">
                     <h1 className="text-2xl font-bold mb-2">Как к вам обращаться?</h1>
-                    <input type="text" placeholder="Псевдоним" className="input input-bordered w-full mb-5" onChange={(e) => setUserName(e.target.value)}/>
+                    <input type="text" placeholder="Псевдоним" className="input input-bordered w-full mb-5" onChange={(e) => setUserName(e.target.value)} required/>
                     <h1 className="text-2xl font-bold mb-2">Никнейм в Telegram</h1>
-                    <input type="email" className="input input-bordered w-full mb-5" placeholder="@example" onChange={(e) => setUserEmail(e.target.value)}/>
+                    <input type="email" className="input input-bordered w-full mb-5" placeholder="@example" onChange={(e) => setUserEmail(e.target.value)} required/>
                     <h1 className="text-2xl font-bold mb-5">Цена: ~{price}₽</h1>
-                    <button className="btn btn-primary w-full" onClick={handleSubmit} disabled={loading}>Создать заявку</button>
+                    <div className="flex justify-between mb-5">
+                        <input type="checkbox" className="checkbox" required/>
+                        <p className="ml-2">Я согласен с <a href="/User-Agreement.pdf" className="link">пользовательским соглашением</a></p>
+                    </div>
+                    <button className="btn btn-primary w-full" type="submit" disabled={loading}>Создать заявку</button>
                 </div>
             </form>
         )
