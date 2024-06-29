@@ -208,7 +208,7 @@ export default function Main() {
             </form>
         )
     }
-    else {
+    if(successData) {
         return(
             <div className="w-full flex items-center justify-center h-screen">
                 <div className="bg-base-200 border-2 border-base-100 shadow-md p-6 card">
