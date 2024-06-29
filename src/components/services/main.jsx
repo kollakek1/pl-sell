@@ -9,7 +9,7 @@ export default function Main() {
     const[sitePrice, setSitePrice] = useState(0);
 
     const[autoDesign, setAutoDesign] = useState(true);
-    const[serverType, setServerType] = useState('ванилла');
+    const[serverType, setServerType] = useState('Ванилла');
 
     const [price, setPrice] = useState(0);
 

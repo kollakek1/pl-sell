@@ -38,7 +38,7 @@ export default function List() {
                 <button className="btn join-item w-1/5 lg:w-1/6 transition-colors duration-500" onClick={() => sortByType('site')}>Сайты</button>
                 <button className="btn join-item w-1/5 lg:w-1/6 transition-colors duration-500" onClick={() => sortByType('config')}>Файлы настроек</button>
             </div>
-            <div className="w-full h-max mt-3 lg:grid grid-cols-2 gap-6">
+            <div className="w-full h-max mt-3 lg:grid grid-cols-2 gap-x-6 gap-y-4">
                 {!sortProducts && 
                     <>
                         <p className="w-full h-48 skeleton shadow-md mb-3"></p>
