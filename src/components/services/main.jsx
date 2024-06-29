@@ -46,6 +46,7 @@ export default function Main() {
     }, [server, plugin, site, launcher, pluginPrice, sitePrice, autoDesign]);
 
     const handleSubmit = () => {
+        event.preventDefault(); // Предотвращаем стандартное поведение для предотвращения перезагрузки страницы
         setLoading(true);
         fetch('/api/createorder', {
             method: 'POST',
@@ -70,9 +71,6 @@ export default function Main() {
         })
         .then(response => response.json())
         .then(data => setSuccessData(data))
-        .catch((error) => {
-            console.error('Error:', error);
-        });
     }
     if (!successData) {
         return (
@@ -203,17 +201,17 @@ export default function Main() {
                         <input type="checkbox" className="checkbox" required/>
                         <p className="ml-2">Я согласен с <a href="/User-Agreement.pdf" className="link">пользовательским соглашением</a></p>
                     </div>
-                    <button className="btn btn-primary w-full" type="submit" disabled={loading}>Создать заявку</button>
+                    <button className="btn btn-primary w-full" type="submit" disabled={loading}>{loading ? <span className="loading loading-spinner"></span> : 'Создать заявку'}</button>
                 </div>
             </form>
         )
     }
-    if(successData) {
+    if (successData) {
         return(
             <div className="w-full flex items-center justify-center h-screen">
                 <div className="bg-base-200 border-2 border-base-100 shadow-md p-6 card">
                     <h1 className="text-4xl font-bold mb-6 text-center">Заявка создана</h1>
-                    <h2 className="text-center text-xl mb-2">Номер вашей заявки: {successData.insertedId}</h2>
+                    <h2 className="text-center text-xl mb-2">Номер вашей заявки: <span className="font-bold text-primary">{successData.insertedId}</span></h2>
                     <h2 className="text-center mb-4">Сохраните, что бы не потерять</h2>
                     <h2 className="text-center">Мы свяжемся с вами в ближайшее время</h2>
                 </div>
