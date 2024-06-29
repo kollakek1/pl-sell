@@ -13,6 +13,6 @@ import Main from '../../components/services/main';
             <Main client:only="react"/>
         </section>
         
-        <Footer></Footer>
+        <Footer inn={import.meta.env.INN} email={import.meta.env.EMAIL}/>
     </main>
 </Layout>

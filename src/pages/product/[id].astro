@@ -40,6 +40,6 @@ const product = await products.findOne({ _id: new ObjectId(id) });
             </div>
         </section>
         
-        <Footer></Footer>
+        <Footer inn={import.meta.env.INN} email={import.meta.env.EMAIL}/>
     </main>
 </Layout>
