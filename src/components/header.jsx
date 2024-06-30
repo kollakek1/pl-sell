@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 export default function Header() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+
+    const [userEmail, setUserEmail] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+
+    const [loginCode, setLoginCode] = useState(false);
+    const [loginError, setLoginError] = useState(false);
+    const [loginLoading, setLoginLoading] = useState(false);
       
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
@@ -39,7 +46,40 @@ export default function Header() {
 
 
     const headerClass = isVisible ? 'max-sm:top-0 top-6' : '-top-24';
+
+    const handlePushCode = () => {
+        event.preventDefault();
+        fetch('/api/login/pushemail', {
+            'method': 'POST',
+            'body': JSON.stringify({userEmail: userEmail}),
+        })
+        setLoginCode(true);
+        console.log(userEmail);
+    }
+
+    const handleLogin = () => {
+        event.preventDefault();
+        setLoginLoading(true);
+        fetch('/api/login', {
+            'method': 'POST',
+            'body': JSON.stringify({userCode: userPassword, userEmail: userEmail}),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data) {
+                localStorage.setItem('userEmail', userEmail);
+                localStorage.setItem('userPassword', userPassword);
+                window.location.href = '/lk';
+            } else {
+                setLoginError(true);
+                setLoginLoading(false);
+            }
+        })
+    }
+
+
     return (
+        <>
         <header className={`transition-all duration-700 lg:fixed ${headerClass} container mx-auto inset-x-0 h-min z-30`}>
             <div className="border-b sm:border border-white/5 bg-white/5 backdrop-blur sm:card py-3 px-4 transition-colors duration-500">
                 <div className="flex justify-between items-center">
@@ -94,15 +134,55 @@ export default function Header() {
                             </svg>
                             EN
                         </a> */}
-                        <a href="/services" className="btn btn-primary my-auto text-base">
-                            Заказать
-                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
-                            </svg>
-                        </a>
+                        {localStorage.getItem('userEmail') && localStorage.getItem('userPassword') ? (
+                            <a href="/lk" className="btn btn-primary my-auto text-base">
+                                Кабинет
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                                </svg>
+                            </a>
+                        ) : (
+                            <a onClick={()=>document.getElementById('login').showModal()} className="btn btn-primary my-auto text-base">
+                                Кабинет
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                                </svg>
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>
         </header>
+        <dialog id="login" className="modal">
+        <div className="modal-box">
+            <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 className="font-bold text-2xl text-center mb-4">Авторизация</h3>
+            {!loginCode ?
+                <form onSubmit={() => handlePushCode() && e.target.reset()}>
+                    <input type="email" placeholder="Email" onChange={(e) => { setUserEmail(e.target.value); setUserPassword(''); }} className="input input-bordered w-full mt-4" minLength={6}/>
+                    <div className="flex justify-start mb-3 mt-3">
+                        <input type="checkbox" className="checkbox" required />
+                        <p className="ml-2">
+                        Я согласен с{" "}
+                        <a href="/User-Agreement.pdf" className="link">
+                            пользовательским соглашением
+                        </a>
+                        </p>
+                    </div>
+                    <button className="btn btn-primary w-full mt-4" type="submit">Получить код</button>
+                </form>
+                :
+                <form onSubmit={() => handleLogin() && e.target.reset()}>
+                    <input type="number" placeholder="Код" onChange={(e) => setUserPassword(e.target.value)} className="input input-bordered w-full mt-4"/>
+                    {loginError && <p className="text-error mt-1 mb-3">Код неверный</p>}
+                    <button className="btn btn-primary w-full mt-4" disabled={loginLoading}>{loginLoading ? <span className="loading loading-spinner"></span> : 'Войти'}</button>
+                </form>
+            }
+
+        </div>
+        </dialog>
+        </>
     );
 }
