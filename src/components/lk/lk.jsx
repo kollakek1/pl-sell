@@ -38,7 +38,7 @@ export default function Lk() {
                                         product.type === 'site' ? 'Сайт автодоната' : ''}
                             </h2>
                             <p className="text-center text-xl mb-5">{product.name}</p>
-                            <p className="text-center">Ключ: <span className="blur hover:blur-none duration-1000">{product.key}</span></p>
+                            {product.type === 'plugin' && <p className="text-center">Ключ: <span className="blur hover:blur-none duration-1000">{product.key}</span></p>}
                             <div className="flex justify-center gap-3 mt-8">
                                 {product?.download_url && <a href={product.download_url} className="btn btn-primary">Скачать</a>}
                                 {product?.key && <button className="btn btn-secondary" onClick={() => navigator.clipboard.writeText(product.name)}>Скопировать ключ</button>}
