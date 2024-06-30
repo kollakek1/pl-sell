@@ -28,13 +28,13 @@ export async function POST({ request }) {
 
     const products = mongoDb.collection('userproduct');
 
-    result = await products.insertOne({
+    await products.insertOne({
         email,
         type: result.type,
         name: result.name,
         orderId,
         createdAt: new Date(),
     });
-
+    
     return new Response('OK');
 }
