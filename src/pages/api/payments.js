@@ -1,5 +1,5 @@
 import { connectToMongo } from '../../lib/mongodb';
-
+import { isInSubnet } from 'is-in-subnet';
 export async function POST({ request }) {
     const ip = request.headers.get('cf-connecting-ip');
     const allowedIps = [
@@ -11,7 +11,7 @@ export async function POST({ request }) {
         "77.75.154.128/25",
         "2a02:5180::/32"
     ];
-    if (!allowedIps.some(ipRange => isIPInRange(ip, ipRange))) {
+    if (!allowedIps.some(ipRange => isInSubnet(ip, ipRange))) {
         console.log(`Request from unauthorized IP ${ip}`);
         return new Response('Unauthorized', { status: 401 });
     }
