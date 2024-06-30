@@ -5,6 +5,7 @@ export async function POST({request, params}) {
   const id = params.id;
   const body = await request.json();
   const product = body.product;
+  const email = body.email;
 
   const yookassa_shop_id = import.meta.env.YM_ID;
   const yookassa_secret_key = import.meta.env.YM_KEY;

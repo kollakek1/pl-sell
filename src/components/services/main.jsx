@@ -15,6 +15,7 @@ export default function Main() {
 
     const[userEmail, setUserEmail] = useState('');
     const[userName, setUserName] = useState('');
+    const[tgName, setTgName] = useState('');
 
     const[serverDescription, setServerDescription] = useState('');
     const[pluginDescription, setPluginDescription] = useState('');
@@ -46,7 +47,7 @@ export default function Main() {
     }, [server, plugin, site, launcher, pluginPrice, sitePrice, autoDesign]);
 
     const handleSubmit = () => {
-        event.preventDefault(); // Предотвращаем стандартное поведение для предотвращения перезагрузки страницы
+        event.preventDefault();
         setLoading(true);
         fetch('/api/createorder', {
             method: 'POST',
@@ -63,6 +64,7 @@ export default function Main() {
                 price,
                 userEmail,
                 userName,
+                tgName,
                 serverDescription,
                 pluginDescription,
                 siteDescription,
@@ -195,7 +197,9 @@ export default function Main() {
                     <h1 className="text-2xl font-bold mb-2">Как к вам обращаться?</h1>
                     <input type="text" placeholder="Псевдоним" className="input input-bordered w-full mb-5" onChange={(e) => setUserName(e.target.value)} required/>
                     <h1 className="text-2xl font-bold mb-2">Никнейм в Telegram</h1>
-                    <input type="text" className="input input-bordered w-full mb-5" placeholder="@example" onChange={(e) => setUserEmail(e.target.value)} required/>
+                    <input type="text" className="input input-bordered w-full mb-5" placeholder="@example" onChange={(e) => setTgName(e.target.value)} required/>
+                    <h1 className="text-2xl font-bold mb-2">Почта</h1>
+                    <input type="text" className="input input-bordered w-full mb-5" placeholder="example@mail.com" onChange={(e) => setUserEmail(e.target.value)} required/>
                     <h1 className="text-2xl font-bold mb-5">Цена: ~{price}₽</h1>
                     <div className="flex justify-between mb-5">
                         <input type="checkbox" className="checkbox" required/>

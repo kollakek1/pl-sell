@@ -3,7 +3,7 @@ import { connectToMongo } from '../../lib/mongodb';
 
 export async function POST({ request }) {
   const body = await request.text();
-  const { server, plugin, site, launcher, autoDesign, serverType, price, userEmail, userName, serverDescription, pluginDescription, siteDescription, launcherDescription } = JSON.parse(body);
+  const { server, plugin, site, launcher, autoDesign, serverType, price, userEmail, userName, tgName, serverDescription, pluginDescription, siteDescription, launcherDescription } = JSON.parse(body);
   const status = 'В обработке';
 
   const { db } = await connectToMongo();
@@ -21,6 +21,7 @@ export async function POST({ request }) {
       autoDesign,
       serverType,
       price,
+      tgName,
       userEmail,
       userName,
       serverDescription,
@@ -52,7 +53,8 @@ export async function POST({ request }) {
           `${launcher ? `Детали продукта(лаунчер): ${launcherDescription}` : ''}`,
           `Цена: ${price}₽`,
           `ID: ${result.insertedId}`,
-          `Заказчик: ${userName} (${userEmail})`
+          `Заказчик: ${userName} (${userEmail})`,
+          `Телеграм: ${tgName}`,
         ].filter(Boolean).join('\n\n'),
         color: 5814783
       }
