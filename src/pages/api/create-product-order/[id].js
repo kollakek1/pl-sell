@@ -25,7 +25,7 @@ export async function POST({request, params}) {
     'capture': true,
     'confirmation': {
       'type': 'redirect',
-      'return_url': 'https://www.example.com/return_url'
+      'return_url': 'https://vndteam.ru/market/success'
     },
     'description': `Заказ №${id}`
   };
