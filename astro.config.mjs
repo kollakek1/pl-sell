@@ -10,7 +10,7 @@ import robotsTxt from "astro-robots-txt";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwind(), icon(), sitemap(), robotsTxt()],
-  site: 'https://vnd-team.vercel.app',
+  site: 'https://vndteam.ru',
   output: "server",
   adapter: vercel({
     webAnalytics: {
