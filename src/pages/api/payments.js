@@ -13,7 +13,7 @@ export async function POST({ request }) {
         "77.75.154.128/25",
         "2a02:5180::/32"
     ];
-    if (!allowedIps.some(ipRange => isInSubnet(ip, ipRange))) {
+    if (!allowedIps.some(ipRange => isInSubnet(ip, ipRange) && ipRange.includes('/'))) {
         console.log(`Request from unauthorized IP ${ip}`);
         return new Response('Unauthorized', { status: 401 });
     }
