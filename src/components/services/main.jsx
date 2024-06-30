@@ -28,7 +28,7 @@ export default function Main() {
     useEffect(() => {
         let newPrice = 0;
         if (server) newPrice += 300;
-        if (plugin) newPrice += 1000;
+        if (plugin) newPrice += 500;
         if (site) newPrice += 500;
         if (launcher) newPrice += 2500;
         if (autoDesign && site) newPrice += 400;
@@ -139,7 +139,7 @@ export default function Main() {
                             <div className="w-full card bg-base-200 border-2 border-base-100 shadow-md p-4 mb-2 transition-colors duration-500">
                                 <h3 className="text-3xl font-medium mb-4">Плагин</h3>
                                 <h2 className="text-2xl font-medium mb-3">Сложность плагина</h2>
-                                <input type="range" min={0} max="3000" className="range" step="750" onChange={(e) => setPluginPrice(parseInt(e.target.value))} />
+                                <input type="range" min={0} max="1500" className="range" step="375" onChange={(e) => setPluginPrice(parseInt(e.target.value))} />
                                 <div className="flex w-full justify-between px-2 text-xs mb-3">
                                     <span>Лёгкий</span>
                                     <span>|</span>
