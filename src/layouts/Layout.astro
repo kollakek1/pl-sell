@@ -2,9 +2,10 @@
 interface Props {
 	title: string;
 	description: string;
+	noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 import { ViewTransitions } from 'astro:transitions';
 
 ---
@@ -15,6 +16,7 @@ import { ViewTransitions } from 'astro:transitions';
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
+		{noindex && <meta name="robots" content="noindex" />}
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
