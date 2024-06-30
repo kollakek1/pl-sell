@@ -40,8 +40,8 @@ export default function Lk() {
                             <p className="text-center text-xl mb-5">{product.name}</p>
                             <p className="text-center">Ключ: <span className="blur hover:blur-none duration-1000">{product.key}</span></p>
                             <div className="flex justify-center gap-3 mt-8">
-                                <a href={product.download_url} className="btn btn-primary">Скачать</a>
-                                <button className="btn btn-secondary" onClick={() => navigator.clipboard.writeText(product.name)}>Скопировать ключ</button>
+                                {product?.download_url && <a href={product.download_url} className="btn btn-primary">Скачать</a>}
+                                {product?.key && <button className="btn btn-secondary" onClick={() => navigator.clipboard.writeText(product.name)}>Скопировать ключ</button>}
                             </div>
                         </div>
                     ))}

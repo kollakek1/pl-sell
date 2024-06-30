@@ -1,5 +1,6 @@
 import { connectToMongo } from '../../lib/mongodb';
 import { isInSubnet } from 'is-in-subnet';
+
 export async function POST({ request }) {
     const ip = request.headers.get('cf-connecting-ip');
     const allowedIps = [
@@ -22,6 +23,18 @@ export async function POST({ request }) {
     const [, orderId, email] = description.match(/Заказ (\w+) для (\w+@\w+\.\w+)/);
 
     console.log(`Order ${orderId} for ${email} from ${ip}`);
+
+    const result = await mongoDb.collection('products').findOne({ orderId });
+
+    const products = mongoDb.collection('userproduct');
+
+    result = await products.insertOne({
+        email,
+        type: result.type,
+        name: result.name,
+        orderId,
+        createdAt: new Date(),
+    });
 
     return new Response('OK');
 }
