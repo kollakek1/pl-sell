@@ -1,4 +1,4 @@
-import { connectToMongo } from '../../../lib/mongodb';
+import { connectToMongo } from '../../lib/mongodb';
 
 export async function POST({ request }) {
     const ip = request.headers.get('cf-connecting-ip');
@@ -20,7 +20,7 @@ export async function POST({ request }) {
 
     const description = body.object.description;
     const [, orderId, email] = description.match(/Заказ (\w+) для (\w+@\w+\.\w+)/);
-    
+
     console.log(`Order ${orderId} for ${email} from ${ip}`);
 
     return new Response('OK');
