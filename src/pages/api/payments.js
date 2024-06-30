@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb';
 import { connectToMongo } from '../../lib/mongodb';
 import { isInSubnet } from 'is-in-subnet';
 
@@ -24,7 +25,7 @@ export async function POST({ request }) {
 
     console.log(`Order ${orderId} for ${email} from ${ip}`);
 
-    const result = await mongoDb.collection('products').findOne({ orderId });
+    const result = await mongoDb.collection('products').findOne({ _id: new ObjectId(orderId) });
 
     const products = mongoDb.collection('userproduct');
 
