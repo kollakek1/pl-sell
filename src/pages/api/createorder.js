@@ -1,22 +1,17 @@
-import { MongoClient } from 'mongodb';
+
+import { connectToMongo } from '../../lib/mongodb';
 
 export async function POST({ request }) {
   const body = await request.text();
   const { server, plugin, site, launcher, autoDesign, serverType, price, userEmail, userName, serverDescription, pluginDescription, siteDescription, launcherDescription } = JSON.parse(body);
   const status = 'В обработке';
-  const uri = import.meta.env.MONGODB_URI;
-  const client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+
+  const { db } = await connectToMongo();
+  const orders = db.collection('orders');
 
   let result;
 
   try {
-    await client.connect();
-    const db = client.db('vndteam');
-    const orders = db.collection('orders');
-
     result = await orders.insertOne({
       status,
       server,
@@ -36,8 +31,9 @@ export async function POST({ request }) {
     });
 
     console.log('Inserted document with ID:', result.insertedId);
-  } finally {
-    await client.close();
+  } catch (error) {
+    console.error('Error inserting document:', error);
+    return new Response(JSON.stringify({ error: 'Failed to create order' }), { status: 500 });
   }
 
   const webhookUrl = import.meta.env.DS_WEBHOOK_URI;
@@ -63,11 +59,15 @@ export async function POST({ request }) {
     ],
   };
 
-  await fetch(webhookUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(webhookData),
-  });
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(webhookData),
+    });
+  } catch (error) {
+    console.error('Error sending webhook:', error);
+  }
 
   return new Response(JSON.stringify(result));
 }
