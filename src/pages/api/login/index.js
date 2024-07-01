@@ -1,7 +1,7 @@
 
 import { connectToMongo } from '../../../lib/mongodb';
 import { connectToRedis } from '../../../lib/redis';
-
+import { ObjectId } from 'mongodb';
 export async function POST({ request }) {
     const redisClient = await connectToRedis();
     const { db: mongoDb } = await connectToMongo();
@@ -24,7 +24,7 @@ export async function POST({ request }) {
             const { orderId, key } = userProduct;
             
 
-            const productDetails = await productDetailsCollection.findOne({ _id: orderId });
+            const productDetails = await productDetailsCollection.findOne({ _id: ObjectId(orderId) });
             
             if (productDetails) {
 
