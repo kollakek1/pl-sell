@@ -51,7 +51,7 @@ const Product = ({ id }) => {
             {product && (
                 <>
                     <h1 className="text-5xl font-medium break-words">{product.name}</h1>
-                    <h2 className="text-2xl mt-8 break-words">{product.description}</h2>
+                    <div className='text-xl break-words mt-3' dangerouslySetInnerHTML={{__html: product.description.replace(/\n/g, '<br />')}}></div>
                     {product.preview_url && (
                         <a
                         href={product.preview_url}
@@ -74,7 +74,7 @@ const Product = ({ id }) => {
           <p className="text-2xl mb-5 font-medium">{product?.name}</p>
           <h1 className="text-2xl font-bold mb-2">Почта</h1>
           <input type="text" className="input input-bordered w-full mb-5" placeholder="example@mail.com" onChange={(e) => setUserEmail(e.target.value)} required/>
-          <p className="text-2xl mb-3 font-medium">
+          <p className="text-2xl mb-4 font-medium">
             Цена: {product?.price}₽
           </p>
           <div className="flex justify-between mb-5">
