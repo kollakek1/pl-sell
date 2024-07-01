@@ -47,7 +47,7 @@ export default function Lk() {
                     ))}
                     {!products &&
                         <>
-                            <div className="rounded-box h-56 border-2 border-base-300 shadow-md transition-all duration-500 skeleton"></div>
+                            <div className="rounded-box h-56 border-2 border-base-300 shadow-md transition-all duration-500 skeleton max-lg:mb-2"></div>
                             <div className="rounded-box h-56 border-2 border-base-300 shadow-md transition-all duration-500 skeleton"></div>
                         </>
                     }

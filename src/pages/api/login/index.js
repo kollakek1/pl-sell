@@ -1,7 +1,6 @@
 
 import { connectToMongo } from '../../../lib/mongodb';
 import { connectToRedis } from '../../../lib/redis';
-import { ObjectId } from 'mongodb';
 
 export async function POST({ request }) {
     const redisClient = await connectToRedis();
@@ -13,15 +12,32 @@ export async function POST({ request }) {
     const code = await redisClient.get(userEmail);
 
     if (userCode === code) {
-        const productsCollection = mongoDb.collection('products');
-        const userProductsCollection = mongoDb.collection('userproduct');
+        const productsCollection = mongoDb.collection('userproduct');
+        const products = await productsCollection.find({ email: userEmail }).toArray();
+    
+        const productDetailsCollection = mongoDb.collection('products');
+    
+        const enrichedProducts = [];
+    
+        for (const userProduct of products) {
 
-        const userProduct = await userProductsCollection.findOne({ email: userEmail, orderId: userCode });
-        const product = await productsCollection.findOne({ _id: userProduct.key }) || null;
-        const products = [product];
-        console.log(products);
-        return new Response(JSON.stringify(products));
+            const { orderId, key } = userProduct;
+            
+
+            const productDetails = await productDetailsCollection.findOne({ _id: orderId });
+            
+            if (productDetails) {
+
+                enrichedProducts.push({
+                    ...productDetails,
+                    ...(key && { key }),
+                });
+            }
+        }
+    
+        return new Response(JSON.stringify(enrichedProducts));
     }
+    
 
     return new Response(false);
 }
