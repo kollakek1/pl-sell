@@ -1,6 +1,7 @@
 
 import { connectToMongo } from '../../../lib/mongodb';
 import { connectToRedis } from '../../../lib/redis';
+import { ObjectId } from 'mongodb';
 
 export async function POST({ request }) {
     const redisClient = await connectToRedis();
@@ -12,9 +13,13 @@ export async function POST({ request }) {
     const code = await redisClient.get(userEmail);
 
     if (userCode === code) {
-        const productsCollection = mongoDb.collection('userproduct');
-        const products = await productsCollection.find({ email: userEmail }).toArray();
+        const productsCollection = mongoDb.collection('products');
+        const userProductsCollection = mongoDb.collection('userproduct');
 
+        const userProduct = await userProductsCollection.findOne({ email: userEmail, orderId: userCode });
+        const product = await productsCollection.findOne({ _id: new ObjectId(userProduct.key) });
+        const products = [product];
+        console.log(products);
         return new Response(JSON.stringify(products));
     }
 

@@ -25,14 +25,10 @@ export async function POST({ request }) {
 
     console.log(`Order ${orderId} for ${email} from ${ip}`);
 
-    const result = await mongoDb.collection('products').findOne({ _id: new ObjectId(orderId) });
-
     const products = mongoDb.collection('userproduct');
 
     await products.insertOne({
         email,
-        type: result.type,
-        name: result.name,
         orderId,
         createdAt: new Date(),
     });
