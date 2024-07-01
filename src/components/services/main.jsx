@@ -5,7 +5,6 @@ export default function Main() {
     const [site, setSite] = useState(false);
     const [launcher, setLauncher] = useState(false);
 
-    const[pluginPrice, setPluginPrice] = useState(0);
     const[sitePrice, setSitePrice] = useState(0);
 
     const[autoDesign, setAutoDesign] = useState(true);
@@ -33,11 +32,6 @@ export default function Main() {
         if (site) newPrice += 500;
         if (launcher) newPrice += 2500;
         if (autoDesign && site) newPrice += 400;
-        if (plugin) {
-            newPrice += pluginPrice;
-        } else {
-            setPluginPrice(0);
-        }
         if (site) {
             newPrice += sitePrice;
         } else {
@@ -134,23 +128,14 @@ export default function Main() {
                                     <option value="Прокси">Прокси</option>
                                 </select>
                                 <h2 className="text-2xl font-medium mb-3">Описание</h2>
-                                <textarea onChange={(e) => setServerDescription(e.target.value)} className="textarea textarea-bordered" placeholder="Укажите максимально подробное описание, детали можно обговорить с менеджером в специальном чате"></textarea>
+                                <textarea onChange={(e) => setServerDescription(e.target.value)} className="textarea textarea-bordered" placeholder="Укажите максимально подробное описание, детали можно обговорить с менеджером"></textarea>
                             </div>
                         )}
                         {plugin && (
                             <div className="w-full card bg-base-200 border-2 border-base-100 shadow-md p-4 mb-2 transition-colors duration-500">
-                                <h3 className="text-3xl font-medium mb-4">Плагин</h3>
-                                <h2 className="text-2xl font-medium mb-3">Сложность плагина</h2>
-                                <input type="range" min={0} max="1500" className="range" step="375" onChange={(e) => setPluginPrice(parseInt(e.target.value))} />
-                                <div className="flex w-full justify-between px-2 text-xs mb-3">
-                                    <span>Лёгкий</span>
-                                    <span>|</span>
-                                    <span>|</span>
-                                    <span>|</span>
-                                    <span>Сложный</span>
-                                </div>
+                                <h3 className="text-3xl font-medium mb-4">Плагин для сервера Minecraft</h3>
                                 <h2 className="text-2xl font-medium mb-3">Описание</h2>
-                                <textarea onChange={(e) => setPluginDescription(e.target.value)} className="textarea textarea-bordered mb-1" placeholder="Укажите максимально подробное описание, детали можно обговорить с менеджером в специальном чате"></textarea>
+                                <textarea onChange={(e) => setPluginDescription(e.target.value)} className="textarea textarea-bordered mb-1" placeholder="Укажите максимально подробное описание, детали можно обговорить с менеджером"></textarea>
                                 <p className="*text-base-content/75">*Плагины нацелены только на 1 проект</p>
                             </div>
                         )}
@@ -171,7 +156,7 @@ export default function Main() {
                                     <p className="ml-2">Придумайте дизайн за меня</p>
                                 </div>
                                 <h2 className="text-2xl font-medium mb-4">Описание</h2>
-                                <textarea onChange={(e) => setSiteDescription(e.target.value)} className="textarea textarea-bordered mb-1" placeholder="Укажите максимально подробное описание, детали можно обговорить с менеджером в специальном чате"></textarea>
+                                <textarea onChange={(e) => setSiteDescription(e.target.value)} className="textarea textarea-bordered mb-1" placeholder="Укажите максимально подробное описание, детали можно обговорить с менеджером"></textarea>
                             </div>
                         )}
                         {launcher && (
@@ -187,7 +172,7 @@ export default function Main() {
                                     <span>Сложный</span>
                                 </div>
                                 <h2 className="text-2xl font-medium mb-4">Описание</h2>
-                                <textarea onChange={(e) => setLauncherDescription(e.target.value)} className="textarea textarea-bordered mb-1" placeholder="Укажите максимально подробное описание, детали можно обговорить с менеджером в специальном чате"></textarea>
+                                <textarea onChange={(e) => setLauncherDescription(e.target.value)} className="textarea textarea-bordered mb-1" placeholder="Укажите максимально подробное описание, детали можно обговорить с менеджером"></textarea>
                             </div>
                         )}
                     </div>
