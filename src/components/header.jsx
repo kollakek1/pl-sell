@@ -174,8 +174,8 @@ export default function Header() {
                     <button className="btn btn-primary w-full mt-4" type="submit">Получить код</button>
                 </form>
                 :
-                <form onSubmit={() => handleLogin() && e.target.reset()}>
-                    <input type="number" placeholder="Код из письма" onChange={(e) => setUserPassword(e.target.value)} className="input input-bordered w-full mt-4"/>
+                <form onSubmit={() => handleLogin() && e.target.reset()} className="w-full">
+                    <input type="number" placeholder="Код из письма" onChange={(e) => setUserPassword(e.target.value)} className="w-full input input-bordered mt-4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"/>
                     {loginError && <p className="text-error mt-1 mb-3">Код неверный</p>}
                     <button className="btn btn-primary w-full mt-4" disabled={loginLoading}>{loginLoading ? <span className="loading loading-spinner"></span> : 'Войти'}</button>
                 </form>
