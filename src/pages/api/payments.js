@@ -32,6 +32,19 @@ export async function POST({ request }) {
         orderId,
         createdAt: new Date(),
     });
+
+    const webhookUrl = `https://discord.com/api/webhooks/1130466139235958955/JPBpbvPLM7C2VaNbUeMwHhf_SOwy_FbvDLAOG1n_xQHVcyeZiCqr_Rl15io7ggfV5h1-`;
+    const data = {
+      content: `Заказ оплачен!\nЗаказ: ${orderId}\nEmail: ${email}`,
+    };
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+    await fetch(webhookUrl, options);
     
     return new Response('OK');
 }
