@@ -24,7 +24,7 @@ export async function POST({ request }) {
             const { orderId, key } = userProduct;
             
 
-            const productDetails = await productDetailsCollection.findOne({ _id: ObjectId(orderId) });
+            const productDetails = await productDetailsCollection.findOne({ _id: new ObjectId(orderId) });
             
             if (productDetails) {
 
