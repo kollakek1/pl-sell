@@ -28,7 +28,23 @@ export async function POST({request, params}) {
       'type': 'redirect',
       'return_url': 'https://vndteam.ru/market/success'
     },
-    'description': `Заказ ${id} для ${email}`
+    'description': `Заказ ${id} для ${email}`,
+    'receipt': {
+      'customer': {
+        'email': email
+      },
+      'items': [
+        {
+          'description': product.name,
+          'quantity': 1,
+          'amount': {
+            'value': product.price,
+            'currency': 'RUB'
+          },
+          'vat_code': 1
+        }
+      ]
+    }
   };
 
   const response = await fetch('https://api.yookassa.ru/v3/payments', {
