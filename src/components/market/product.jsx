@@ -46,12 +46,12 @@ const Product = ({ id }) => {
 
   return (
     <section className="lg:min-h-screen mt-28 max-lg:mt-2 h-max flex max-lg:flex-wrap gap-8 lg:container mx-auto w-full max-lg:px-4">
-        <div className="w-full flex gap-4">
+        <div className="w-full lg:w-3/4 flex gap-4">
             <div className="rounded-box bg-base-200 border-2 border-base-100 w-full transition-colors duration-500 p-6">
             {product && (
                 <>
-                    <h1 className="text-5xl font-medium">{product.name}</h1>
-                    <h2 className="text-2xl mt-8">{product.description}</h2>
+                    <h1 className="text-5xl font-medium break-words">{product.name}</h1>
+                    <h2 className="text-2xl mt-8 break-words">{product.description}</h2>
                     {product.preview_url && (
                         <a
                         href={product.preview_url}
