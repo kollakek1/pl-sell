@@ -66,6 +66,7 @@ export default function List() {
                                 <div className="badge badge-secondary badge-lg">Paid</div>
                             }
                             {product.bages.includes('Open Source') && <div className="badge badge-neutral badge-lg">Open Source</div>}
+                            {product.bages.includes('Out of date') && <div className="badge badge-error badge-lg">Out of date</div>}
                         </div>
                         <p className="text-lg mt-3 text-base-content/75 truncate text-wrap">{product.description}</p>
                     </div>
