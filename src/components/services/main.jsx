@@ -38,7 +38,7 @@ export default function Main() {
             setSitePrice(0);
         }
         setPrice(newPrice);
-    }, [server, plugin, site, launcher, pluginPrice, sitePrice, autoDesign]);
+    }, [server, plugin, site, launcher, sitePrice, autoDesign]);
 
     const handleSubmit = () => {
         event.preventDefault();
