@@ -17,7 +17,7 @@ export async function POST({ request }) {
         const userProductsCollection = mongoDb.collection('userproduct');
 
         const userProduct = await userProductsCollection.findOne({ email: userEmail, orderId: userCode });
-        const product = await productsCollection.findOne({ _id: new ObjectId(userProduct.key) });
+        const product = await productsCollection.findOne({ _id: userProduct.key }) || null;
         const products = [product];
         console.log(products);
         return new Response(JSON.stringify(products));
