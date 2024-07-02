@@ -25,6 +25,9 @@ export default function Main() {
 
     const[successData, setSuccessData] = useState(null);
 
+    const[productError, setProductError] = useState(false);
+    const[telegramError, setTelegramError] = useState(false);
+
     useEffect(() => {
         let newPrice = 0;
         if (server) newPrice += 300;
@@ -42,6 +45,14 @@ export default function Main() {
 
     const handleSubmit = () => {
         event.preventDefault();
+        if (!server && !plugin && !site && !launcher) {
+            setProductError(true);
+            return;
+        }
+        if (tgName.length > 0 && !tgName.startsWith("@") && !tgName.startsWith("https://t.me")) {
+            setTelegramError(true);
+            return;
+        }
         setLoading(true);
         fetch('/api/createorder', {
             method: 'POST',
@@ -72,7 +83,7 @@ export default function Main() {
         return (
             <form className="w-full flex gap-8 max-2xl:flex-wrap" onSubmit={handleSubmit}>
                 <div className="card w-full p-6 border-2 border-base-100">
-                    <h1 className="text-4xl font-bold mb-4">Наши услуги</h1>
+                    <h1 className="text-4xl font-bold mb-4">Наши услуги {productError ? <span className="text-error text-xl font-normal">*Выберите хоть 1 продукт</span> : ''}</h1>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
                         <div className={`w-full p-3 card bg-base-200 shadow-md hover:scale-105 hover:shadow-lg transition-all duration-500 border-2 cursor-pointer ${server === true ? 'border-primary' : 'border-base-100'}`} onClick={() => setServer(!server)}>
                             <h1 className="text-3xl font-bold flex">
@@ -182,15 +193,17 @@ export default function Main() {
                     <h1 className="text-2xl font-bold mb-2">Как к вам обращаться?</h1>
                     <input type="text" placeholder="Псевдоним" className="input input-bordered w-full mb-5" onChange={(e) => setUserName(e.target.value)} required/>
                     <h1 className="text-2xl font-bold mb-2">Никнейм в Telegram</h1>
-                    <input type="text" className="input input-bordered w-full mb-5" placeholder="@example" onChange={(e) => setTgName(e.target.value)} required/>
-                    <h1 className="text-2xl font-bold mb-2">Почта</h1>
+                    <input type="text" className="input input-bordered w-full" placeholder="@example" onChange={(e) => setTgName(e.target.value)} required/>
+                    {telegramError && <p className="text-error text-sm mt-1">Telegram должен начинатся с @ или https://t.me</p>}
+                    <h1 className="text-2xl font-bold mt-5 mb-2">Почта</h1>
                     <input type="email" className="input input-bordered w-full mb-5" placeholder="example@mail.com" onChange={(e) => setUserEmail(e.target.value)} required/>
-                    <h1 className="text-2xl font-bold mb-5">Цена: ~{price}₽</h1>
+                    <h1 className="text-2xl font-bold mb-5">Цена: от {price}₽</h1>
                     <div className="flex justify-between mb-5">
                         <input type="checkbox" className="checkbox" required/>
                         <p className="ml-2">Я согласен с <a href="/User-Agreement.pdf" className="link">пользовательским соглашением</a></p>
                     </div>
                     <button className="btn btn-primary w-full" type="submit" disabled={loading}>{loading ? <span className="loading loading-spinner"></span> : 'Создать заявку'}</button>
+                    <p className="text-xs mt-2">*Полная цена будет сформирована после уточнения всех деталей.</p>
                 </div>
             </form>
         )
