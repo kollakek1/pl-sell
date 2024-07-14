@@ -106,7 +106,7 @@ const Product = ({ id }) => {
                   </a>
                 </p>
               </div>
-              <a href={product.download_url} className="btn btn-primary w-full" onClick={() => setLoading(true)}  disabled={loading}>
+              <a href={product?.download_url} className="btn btn-primary w-full" onClick={() => setLoading(true)}  disabled={loading}>
                 {loading ? <span className="loading loading-spinner loading-md"></span> : "Скачать"}
               </a>
             </>
