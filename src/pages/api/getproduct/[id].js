@@ -8,7 +8,7 @@ export async function GET({ params }) {
     const products = db.collection('products');
     const product = await products.findOne({ _id: new ObjectId(id) });
     
-    if (product && product.download_url) {
+    if (product && product.price > 0 && product.download_url) {
         delete product.download_url;
     }
 

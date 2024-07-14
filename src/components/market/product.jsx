@@ -73,22 +73,46 @@ const Product = ({ id }) => {
         >
           <p className="text-2xl mb-5 font-medium">{product?.name}</p>
           <h1 className="text-2xl font-bold mb-2">Почта</h1>
-          <input type="text" className="input input-bordered w-full mb-5" placeholder="example@mail.com" onChange={(e) => setUserEmail(e.target.value)} required/>
-          <p className="text-2xl mb-4 font-medium">
-            Цена: {product?.price}₽
-          </p>
-          <div className="flex justify-between mb-5">
-            <input type="checkbox" className="checkbox" required />
-            <p className="ml-2">
-              Я согласен с{" "}
-              <a href="/User-Agreement.pdf" className="link">
-                пользовательским соглашением
+          {
+            product?.price > 0 ? (
+              <>
+                <input type="text" className="input input-bordered w-full mb-5" placeholder="example@mail.com" onChange={(e) => setUserEmail(e.target.value)} required/>
+                <p className="text-2xl mb-4 font-medium">
+                  Цена: {product?.price}₽
+                </p>
+                <div className="flex justify-between mb-5">
+                  <input type="checkbox" className="checkbox" required />
+                  <p className="ml-2">
+                    Я согласен с{" "}
+                    <a href="/User-Agreement.pdf" className="link">
+                      пользовательским соглашением
+                    </a>
+                  </p>
+                </div>
+                <button className="btn btn-primary w-full" type="submit" disabled={loading}>
+                  {loading ? <span className="loading loading-spinner loading-md"></span> : "Купить"}
+                </button>
+              </>
+            )
+            :
+            ( 
+            <>
+              <div className="flex justify-between mb-5">
+                <input type="checkbox" className="checkbox" required />
+                <p className="ml-2">
+                  Я согласен с{" "}
+                  <a href="/User-Agreement.pdf" className="link">
+                    пользовательским соглашением
+                  </a>
+                </p>
+              </div>
+              <a href={product.download_url} className="btn btn-primary w-full" onClick={() => setLoading(true)}  disabled={loading}>
+                {loading ? <span className="loading loading-spinner loading-md"></span> : "Скачать"}
               </a>
-            </p>
-          </div>
-          <button className="btn btn-primary w-full" type="submit" disabled={loading}>
-            {loading ? <span className="loading loading-spinner loading-md"></span> : "Купить"}
-          </button>
+            </>
+            )
+          }
+
         </form>
         </div>
     </section>
