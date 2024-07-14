@@ -72,10 +72,10 @@ const Product = ({ id }) => {
           onSubmit={(e) => {e.preventDefault(); handleSumbit()}}
         >
           <p className="text-2xl mb-5 font-medium">{product?.name}</p>
-          <h1 className="text-2xl font-bold mb-2">Почта</h1>
           {
             product?.price > 0 ? (
               <>
+                <h1 className="text-2xl font-bold mb-2">Почта</h1>
                 <input type="text" className="input input-bordered w-full mb-5" placeholder="example@mail.com" onChange={(e) => setUserEmail(e.target.value)} required/>
                 <p className="text-2xl mb-4 font-medium">
                   Цена: {product?.price}₽
